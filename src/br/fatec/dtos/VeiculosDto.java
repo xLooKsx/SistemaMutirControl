@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.util.Date;
 import java.util.Objects;
@@ -12,7 +12,7 @@ import java.util.Objects;
  *
  * @author Felipe
  */
-public class Veiculos {
+public class VeiculosDto {
     
     private String numero_Veiculo;
     private String numero_Chassis;
@@ -22,10 +22,10 @@ public class Veiculos {
     private String numero_Carroceria;
     private String numero_Fabricacao;
 
-    public Veiculos() {
+    public VeiculosDto() {
     }
 
-    public Veiculos(String numero_Veiculo, String numero_Chassis, String modelo, String placa, Date ano, String numero_Carroceria, String numero_Fabricacao) {
+    public VeiculosDto(String numero_Veiculo, String numero_Chassis, String modelo, String placa, Date ano, String numero_Carroceria, String numero_Fabricacao) {
         this.numero_Veiculo = numero_Veiculo;
         this.numero_Chassis = numero_Chassis;
         this.modelo = modelo;
@@ -109,7 +109,7 @@ public class Veiculos {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Veiculos other = (Veiculos) obj;
+        final VeiculosDto other = (VeiculosDto) obj;
         if (!Objects.equals(this.numero_Veiculo, other.numero_Veiculo)) {
             return false;
         }

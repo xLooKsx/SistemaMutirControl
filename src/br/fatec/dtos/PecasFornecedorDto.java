@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.util.Objects;
 
@@ -11,32 +11,32 @@ import java.util.Objects;
  *
  * @author Felipe
  */
-public class Pecas_Fornecedor {
+public class PecasFornecedorDto {
     
-    private Pecas pecas_idPecas;
-    private Fornecedor fornecedor_cnpj;
+    private PecasDto pecas_idPecas;
+    private FornecedorDto fornecedor_cnpj;
 
-    public Pecas_Fornecedor() {
+    public PecasFornecedorDto() {
     }
      
-    public Pecas_Fornecedor(Pecas pecas_idPecas, Fornecedor fornecedor_cnpj) {
+    public PecasFornecedorDto(PecasDto pecas_idPecas, FornecedorDto fornecedor_cnpj) {
         this.pecas_idPecas = pecas_idPecas;
         this.fornecedor_cnpj = fornecedor_cnpj;
     }
 
-    public Pecas getPecas_idPecas() {
+    public PecasDto getPecas_idPecas() {
         return pecas_idPecas;
     }
 
-    public void setPecas_idPecas(Pecas pecas_idPecas) {
+    public void setPecas_idPecas(PecasDto pecas_idPecas) {
         this.pecas_idPecas = pecas_idPecas;
     }
 
-    public Fornecedor getFornecedor_cnpj() {
+    public FornecedorDto getFornecedor_cnpj() {
         return fornecedor_cnpj;
     }
 
-    public void setFornecedor_cnpj(Fornecedor fornecedor_cnpj) {
+    public void setFornecedor_cnpj(FornecedorDto fornecedor_cnpj) {
         this.fornecedor_cnpj = fornecedor_cnpj;
     }
 
@@ -59,7 +59,7 @@ public class Pecas_Fornecedor {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pecas_Fornecedor other = (Pecas_Fornecedor) obj;
+        final PecasFornecedorDto other = (PecasFornecedorDto) obj;
         if (!Objects.equals(this.pecas_idPecas, other.pecas_idPecas)) {
             return false;
         }

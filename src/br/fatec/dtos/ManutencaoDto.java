@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 import java.util.Date;
 
 /**
  *
  * @author Felipe
  */
-public class Manutencao {
+public class ManutencaoDto {
     private int idManutencao;
     private Date dataSolicitacao;
     private Date dataRealizacao;
     private String tipoManutencao;
-    private Motorista_Veiculo motorista_cpf;
-    private Motorista_Veiculo veiculo_numero_veiculo;
-    private Mecanicos mecanicos_cpf;
-    private Pecas_Orcadas pecas_orcadas_mecanicos_cpf;
-    private Pecas_Orcadas pecas_idPecas;
-    private Pecas_Orcadas fornecedor_cnpj;
+    private MotoristaVeiculoDto motorista_cpf;
+    private MotoristaVeiculoDto veiculo_numero_veiculo;
+    private MecanicosDto mecanicos_cpf;
+    private PecasOrcadasDto pecas_orcadas_mecanicos_cpf;
+    private PecasOrcadasDto pecas_idPecas;
+    private PecasOrcadasDto fornecedor_cnpj;
 
-    public Manutencao() {
+    public ManutencaoDto() {
     }
 
     public int getIdManutencao() {
@@ -57,51 +57,51 @@ public class Manutencao {
         this.tipoManutencao = tipoManutencao;
     }
 
-    public Motorista_Veiculo getMotorista_cpf() {
+    public MotoristaVeiculoDto getMotorista_cpf() {
         return motorista_cpf;
     }
 
-    public void setMotorista_cpf(Motorista_Veiculo motorista_cpf) {
+    public void setMotorista_cpf(MotoristaVeiculoDto motorista_cpf) {
         this.motorista_cpf = motorista_cpf;
     }
 
-    public Motorista_Veiculo getVeiculo_numero_veiculo() {
+    public MotoristaVeiculoDto getVeiculo_numero_veiculo() {
         return veiculo_numero_veiculo;
     }
 
-    public void setVeiculo_numero_veiculo(Motorista_Veiculo veiculo_numero_veiculo) {
+    public void setVeiculo_numero_veiculo(MotoristaVeiculoDto veiculo_numero_veiculo) {
         this.veiculo_numero_veiculo = veiculo_numero_veiculo;
     }
 
-    public Mecanicos getMecanicos_cpf() {
+    public MecanicosDto getMecanicos_cpf() {
         return mecanicos_cpf;
     }
 
-    public void setMecanicos_cpf(Mecanicos mecanicos_cpf) {
+    public void setMecanicos_cpf(MecanicosDto mecanicos_cpf) {
         this.mecanicos_cpf = mecanicos_cpf;
     }
 
-    public Pecas_Orcadas getPecas_orcadas_mecanicos_cpf() {
+    public PecasOrcadasDto getPecas_orcadas_mecanicos_cpf() {
         return pecas_orcadas_mecanicos_cpf;
     }
 
-    public void setPecas_orcadas_mecanicos_cpf(Pecas_Orcadas pecas_orcadas_mecanicos_cpf) {
+    public void setPecas_orcadas_mecanicos_cpf(PecasOrcadasDto pecas_orcadas_mecanicos_cpf) {
         this.pecas_orcadas_mecanicos_cpf = pecas_orcadas_mecanicos_cpf;
     }
 
-    public Pecas_Orcadas getPecas_idPecas() {
+    public PecasOrcadasDto getPecas_idPecas() {
         return pecas_idPecas;
     }
 
-    public void setPecas_idPecas(Pecas_Orcadas pecas_idPecas) {
+    public void setPecas_idPecas(PecasOrcadasDto pecas_idPecas) {
         this.pecas_idPecas = pecas_idPecas;
     }
 
-    public Pecas_Orcadas getFornecedor_cnpj() {
+    public PecasOrcadasDto getFornecedor_cnpj() {
         return fornecedor_cnpj;
     }
 
-    public void setFornecedor_cnpj(Pecas_Orcadas fornecedor_cnpj) {
+    public void setFornecedor_cnpj(PecasOrcadasDto fornecedor_cnpj) {
         this.fornecedor_cnpj = fornecedor_cnpj;
     }
 
@@ -123,7 +123,7 @@ public class Manutencao {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Manutencao other = (Manutencao) obj;
+        final ManutencaoDto other = (ManutencaoDto) obj;
         if (this.idManutencao != other.idManutencao) {
             return false;
         }

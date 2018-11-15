@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author Felipe
  */
-public class Mecanicos {
+public class MecanicosDto {
     private String cpf;
     private String rg;
     private String nome;
@@ -19,10 +19,10 @@ public class Mecanicos {
     private String telefone;
     private String email;
 
-    public Mecanicos() {
+    public MecanicosDto() {
     }
     
-    public Mecanicos(String cpf, String rg, String nome, String endereco, String telefone, String email) {
+    public MecanicosDto(String cpf, String rg, String nome, String endereco, String telefone, String email) {
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
@@ -100,7 +100,7 @@ public class Mecanicos {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Mecanicos other = (Mecanicos) obj;
+        final MecanicosDto other = (MecanicosDto) obj;
         if (!Objects.equals(this.cpf, other.cpf)) {
             return false;
         }

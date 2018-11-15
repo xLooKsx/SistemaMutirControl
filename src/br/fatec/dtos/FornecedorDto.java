@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import br.fatec.dao.FornecedorDao;
+import br.fatec.daos.FornecedorDao;
 
 /**
  *
@@ -22,7 +22,7 @@ import br.fatec.dao.FornecedorDao;
 
 
 
-public class Fornecedor {
+public class FornecedorDto {
    
     private String cnpj; 
     private String nome; 
@@ -31,10 +31,10 @@ public class Fornecedor {
     private String email;
     private String razao_Social;
     
-    public Fornecedor() {
+    public FornecedorDto() {
     }
 
-    public Fornecedor(String cnpj, String nome, String endereco, String telefone, String email, String razao_Social) {
+    public FornecedorDto(String cnpj, String nome, String endereco, String telefone, String email, String razao_Social) {
         this.cnpj = cnpj;
         this.nome = nome;
         this.endereco = endereco;
@@ -109,7 +109,7 @@ public class Fornecedor {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Fornecedor other = (Fornecedor) obj;
+        final FornecedorDto other = (FornecedorDto) obj;
         if (!Objects.equals(this.cnpj, other.cnpj)) {
             return false;
         }
@@ -117,8 +117,8 @@ public class Fornecedor {
     }
     
    
-    public static ArrayList<Fornecedor> getFornecedor(){
-        ArrayList<Fornecedor> fornecedores = new ArrayList();
+    public static ArrayList<FornecedorDto> getFornecedor(){
+        ArrayList<FornecedorDto> fornecedores = new ArrayList();
         return fornecedores;
     }
     

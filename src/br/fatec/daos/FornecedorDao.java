@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.fatec.dao;
+package br.fatec.daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
-import model.domain.Fornecedor;
+import br.fatec.dtos.FornecedorDto;
 
 /**
  *
@@ -22,10 +22,10 @@ import model.domain.Fornecedor;
 public class FornecedorDao {
    
     
-    public static void SalvarFornecedor(Fornecedor fornecedor) throws SQLException,ClassNotFoundException{
+    public static void SalvarFornecedor(FornecedorDto fornecedor) throws SQLException,ClassNotFoundException{
         String codsql = "";
         Connection conexao = new ConnectionFactory().getConexao();
-        List<Fornecedor> fornecedorSalvar = new ArrayList<Fornecedor>();
+        List<FornecedorDto> fornecedorSalvar = new ArrayList<FornecedorDto>();
         List<String> cnpj = new ArrayList<String>();
         ResultSet rs = null;
         try {
@@ -33,7 +33,7 @@ public class FornecedorDao {
             rs = sql.executeQuery();
             while(rs.next()){
         
-                Fornecedor forn = new Fornecedor();
+                FornecedorDto forn = new FornecedorDto();
 
                 forn.setCnpj(rs.getString("cnpj"));
 
@@ -84,10 +84,10 @@ public class FornecedorDao {
     
     
     
-    public void excluir(Fornecedor fornecedor){
+    public void excluir(FornecedorDto fornecedor){
            
     }
-    public List<Fornecedor> pesquisa(Fornecedor fornecedor){
+    public List<FornecedorDto> pesquisa(FornecedorDto fornecedor){
     
         return null;
     }

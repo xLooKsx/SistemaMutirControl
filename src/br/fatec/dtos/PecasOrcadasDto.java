@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.util.Objects;
 
@@ -11,17 +11,17 @@ import java.util.Objects;
  *
  * @author Felipe
  */
-public class Pecas_Orcadas {
-    private Mecanicos mecanicos_cpf;
-    private Pecas_Fornecedor pecas_idPecas;
-    private Pecas_Fornecedor fornecedores_cnpj;
+public class PecasOrcadasDto {
+    private MecanicosDto mecanicos_cpf;
+    private PecasFornecedorDto pecas_idPecas;
+    private PecasFornecedorDto fornecedores_cnpj;
     private int quantidade;
     private double valor_unitario;
 
-    public Pecas_Orcadas() {
+    public PecasOrcadasDto() {
     }
 
-    public Pecas_Orcadas(Mecanicos mecanicos_cpf, Pecas_Fornecedor pecas_idPecas, Pecas_Fornecedor fornecedores_cnpj, int quantidade, double valor_unitario) {
+    public PecasOrcadasDto(MecanicosDto mecanicos_cpf, PecasFornecedorDto pecas_idPecas, PecasFornecedorDto fornecedores_cnpj, int quantidade, double valor_unitario) {
         this.mecanicos_cpf = mecanicos_cpf;
         this.pecas_idPecas = pecas_idPecas;
         this.fornecedores_cnpj = fornecedores_cnpj;
@@ -29,27 +29,27 @@ public class Pecas_Orcadas {
         this.valor_unitario = valor_unitario;
     }
 
-    public Mecanicos getMecanicos_cpf() {
+    public MecanicosDto getMecanicos_cpf() {
         return mecanicos_cpf;
     }
 
-    public void setMecanicos_cpf(Mecanicos mecanicos_cpf) {
+    public void setMecanicos_cpf(MecanicosDto mecanicos_cpf) {
         this.mecanicos_cpf = mecanicos_cpf;
     }
 
-    public Pecas_Fornecedor getPecas_idPecas() {
+    public PecasFornecedorDto getPecas_idPecas() {
         return pecas_idPecas;
     }
 
-    public void setPecas_idPecas(Pecas_Fornecedor pecas_idPecas) {
+    public void setPecas_idPecas(PecasFornecedorDto pecas_idPecas) {
         this.pecas_idPecas = pecas_idPecas;
     }
 
-    public Pecas_Fornecedor getFornecedores_cnpj() {
+    public PecasFornecedorDto getFornecedores_cnpj() {
         return fornecedores_cnpj;
     }
 
-    public void setFornecedores_cnpj(Pecas_Fornecedor fornecedores_cnpj) {
+    public void setFornecedores_cnpj(PecasFornecedorDto fornecedores_cnpj) {
         this.fornecedores_cnpj = fornecedores_cnpj;
     }
 
@@ -89,7 +89,7 @@ public class Pecas_Orcadas {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pecas_Orcadas other = (Pecas_Orcadas) obj;
+        final PecasOrcadasDto other = (PecasOrcadasDto) obj;
         if (!Objects.equals(this.mecanicos_cpf, other.mecanicos_cpf)) {
             return false;
         }

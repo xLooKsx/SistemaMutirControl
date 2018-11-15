@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.fatec.view;
+package br.fatec.views;
 
-import br.fatec.control.FornecedorController;
+import br.fatec.controls.FornecedorController;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;

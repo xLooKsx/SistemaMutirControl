@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.domain;
+package br.fatec.dtos;
 
 import java.util.Objects;
 
@@ -11,31 +11,31 @@ import java.util.Objects;
  *
  * @author Felipe
  */
-public class Motorista_Veiculo {
-    private Motorista motorista_cpf;
-    private Veiculos veiculo_numero_veiculo;
+public class MotoristaVeiculoDto {
+    private MotoristaDto motorista_cpf;
+    private VeiculosDto veiculo_numero_veiculo;
 
-    public Motorista_Veiculo() {
+    public MotoristaVeiculoDto() {
     }
 
-    public Motorista_Veiculo(Motorista motorista_cpf, Veiculos veiculo_numero_veiculo) {
+    public MotoristaVeiculoDto(MotoristaDto motorista_cpf, VeiculosDto veiculo_numero_veiculo) {
         this.motorista_cpf = motorista_cpf;
         this.veiculo_numero_veiculo = veiculo_numero_veiculo;
     }
 
-    public Motorista getMotorista_cpf() {
+    public MotoristaDto getMotorista_cpf() {
         return motorista_cpf;
     }
 
-    public void setMotorista_cpf(Motorista motorista_cpf) {
+    public void setMotorista_cpf(MotoristaDto motorista_cpf) {
         this.motorista_cpf = motorista_cpf;
     }
 
-    public Veiculos getVeiculo_numero_veiculo() {
+    public VeiculosDto getVeiculo_numero_veiculo() {
         return veiculo_numero_veiculo;
     }
 
-    public void setVeiculo_numero_veiculo(Veiculos veiculo_numero_veiculo) {
+    public void setVeiculo_numero_veiculo(VeiculosDto veiculo_numero_veiculo) {
         this.veiculo_numero_veiculo = veiculo_numero_veiculo;
     }
 
@@ -58,7 +58,7 @@ public class Motorista_Veiculo {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Motorista_Veiculo other = (Motorista_Veiculo) obj;
+        final MotoristaVeiculoDto other = (MotoristaVeiculoDto) obj;
         if (!Objects.equals(this.motorista_cpf, other.motorista_cpf)) {
             return false;
         }

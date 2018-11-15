@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.fatec.control;
+package br.fatec.controls;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import model.domain.Fornecedor;
+import br.fatec.dtos.FornecedorDto;
 
 /**
  *
  * @author Felipe
  */
 public class FornecedorController {
-    private static Fornecedor objFornecedor;
+    private static FornecedorDto objFornecedor;
     
     public static void salvarFornecedor(ArrayList<String> fLista) throws SQLException, ClassNotFoundException{
         objFornecedor.setCnpj(fLista.get(1));
@@ -32,7 +32,7 @@ public class FornecedorController {
     public static ArrayList<String[]> getForncedor(){
         ArrayList<String[]> fornecedor = new ArrayList();
         
-        ArrayList<Fornecedor> forne = Fornecedor.getFornecedor();
+        ArrayList<FornecedorDto> forne = FornecedorDto.getFornecedor();
         for(int i=0;i<forne.size();i++){
            String f[] = new String[6];
            f[0] = forne.get(i).getCnpj();
