@@ -5,6 +5,7 @@
  */
 package br.fatec.dao;
 
+import br.fatec.utils.SistemaUtils;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -15,19 +16,14 @@ import javax.swing.JOptionPane;
  * @author Felipe
  */
 public class ConnectionFactory {
-   
-
-    public static Connection getConexao() {
-        Connection conexao = null;
-        try{
-            String url = "jdbc:mysql://localhost:3306/dbprojetomitur?useTimezone=true&serverTimezone=UTC";
-            String usuario = "root";
-            String senha = "";
-            conexao = DriverManager.getConnection(url,usuario,senha);
+   public Connection getConexao() {
+        SistemaUtils utils = new SistemaUtils();
+        try{            
+            return DriverManager.getConnection(utils.getConfigProperty("data-base.config.url.connection"), utils.getConfigProperty("data-base.config.user"), "");
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null,"Erro de conexao: " + e);
         }
-        return conexao;
+        return null;        
      }
 
 }

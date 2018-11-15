@@ -9,89 +9,137 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import br.fatec.dtos.FornecedorDto;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Felipe
  */
 public class FornecedorDao {
-   
+
+    private ConnectionFactory connectionFactory;
+    private Connection connection;
+    private ResultSet resultSet;
+    private PreparedStatement statement;
+
+    private Logger LOG = Logger.getLogger(FornecedorDao.class.getName());
     
-    public static void SalvarFornecedor(FornecedorDto fornecedor) throws SQLException,ClassNotFoundException{
-        String codsql = "";
-        Connection conexao = new ConnectionFactory().getConexao();
-        List<FornecedorDto> fornecedorSalvar = new ArrayList<FornecedorDto>();
-        List<String> cnpj = new ArrayList<String>();
-        ResultSet rs = null;
+    public FornecedorDao() {
+        connectionFactory = new ConnectionFactory();
+    }
+
+    public void getFornecedor(FornecedorDto fornecedor) throws SQLException, ClassNotFoundException {
+        connection = connectionFactory.getConexao();
+        List<FornecedorDto> fornecedorSalvar = new ArrayList<>();
+        List<String> cnpj = new ArrayList<>();
         try {
-            PreparedStatement sql = conexao.prepareStatement("select * from Fornecedores");
-            rs = sql.executeQuery();
-            while(rs.next()){
-        
+            statement = connection.prepareStatement("select * from Fornecedores");
+            LOG.info(statement.toString());
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+
                 FornecedorDto forn = new FornecedorDto();
 
-                forn.setCnpj(rs.getString("cnpj"));
+                forn.setCnpj(resultSet.getString("cnpj"));
 
                 cnpj.add(forn.getCnpj());
 
             }
-            sql.close();
         } catch (SQLException e) {
-        e.printStackTrace();
-        }
-        for(String cnpjA : cnpj){
-            if(fornecedor.getCnpj() == cnpjA){
-                codsql ="UPDATE FORNECEDORES SET NOME = ?, ENDERECO = ?, TELEFONE = ?, EMAIL = ?, RAZAO_SOCIAL = ? "
-                        + "WHERE CNPJ = ?";
-                try{
-                PreparedStatement sql = conexao.prepareStatement(codsql);
-                sql.setString(1, fornecedor.getNome());
-                sql.setString(2, fornecedor.getEndereco());
-                sql.setString(3, fornecedor.getTelefone());
-                sql.setString(4, fornecedor.getEmail());
-                sql.setString(5, fornecedor.getRazao_Social());
-                sql.setString(6, fornecedor.getCnpj());
-                sql.execute();
-                sql.close();
-                return;
-                }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null, "Erro ao executar o update na tabela" + e.getMessage());
-                    
-                }
+            LOG.log(Level.INFO, "Erro ao salvar o buscar fornecedor: {0}", e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (connection != null) {
+                connection.close();
             }
         }
-        codsql ="INSERT INTO FORNECEDORES (CNPJ, NOME, ENDERECO, TELEFONE, EMAIL,RAZAO_SOCIAL) "
-                + "Values(?,?,?,?,?,?)";
-        try{PreparedStatement sql = conexao.prepareStatement(codsql);
-        sql.setString(1, fornecedor.getCnpj());
-        sql.setString(2, fornecedor.getNome());
-        sql.setString(3, fornecedor.getEndereco());
-        sql.setString(4, fornecedor.getTelefone());
-        sql.setString(5, fornecedor.getEmail());
-        sql.setString(6, fornecedor.getRazao_Social());
-        sql.execute();
-        sql.close();
-        }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null, "Erro ao executar o insert na tabela" + e.getMessage());
-                    return;
-                }
     }
-    
-    
-    
-    public void excluir(FornecedorDto fornecedor){
-           
+
+    public void atualizarFornecedor(FornecedorDto fornecedor) throws SQLException {
+        connection = connectionFactory.getConexao();
+        StringBuilder sqlQuery = new StringBuilder();
+        sqlQuery.append("UPDATE ")
+                .append("FORNECEDORES ")
+                .append("SET ")
+                .append("NOME = ?, ")
+                .append("ENDERECO = ?, ")
+                .append("TELEFONE = ?, ")
+                .append("RAZAO_SOCIAL = ? ")
+                .append("WHERE ")
+                .append("CNPJ = ? ");
+
+        try {
+            statement = connection.prepareStatement(sqlQuery.toString());
+            statement.setString(1, fornecedor.getNome());
+            statement.setString(2, fornecedor.getEndereco());
+            statement.setString(3, fornecedor.getTelefone());
+            statement.setString(4, fornecedor.getEmail());
+            statement.setString(5, fornecedor.getRazao_Social());
+            statement.setString(6, fornecedor.getCnpj());
+            LOG.info(statement.toString());
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {            
+            LOG.log(Level.INFO, "Erro ao atualizar o fornecedor: {0}", e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
-    public List<FornecedorDto> pesquisa(FornecedorDto fornecedor){
-    
-        return null;
+
+    public void inserirFornecedor(FornecedorDto fornecedor) throws SQLException {
+
+        connection = connectionFactory.getConexao();
+        StringBuilder sqlQuery = new StringBuilder();
+        sqlQuery.append("INSERT INTO FORNECEDORES( ")
+                .append("CNPJ, ")
+                .append("NOME, ")
+                .append("ENDERECO, ")
+                .append("TELEFONE, ")
+                .append("EMAIL, ")
+                .append("RAZAO_SOCIAL) ")
+                .append("Values(?,?,?,?,?,?) ");
+
+        try {
+            statement = connection.prepareStatement(sqlQuery.toString());
+            statement.setString(1, fornecedor.getCnpj());
+            statement.setString(3, fornecedor.getEndereco());
+            statement.setString(4, fornecedor.getTelefone());
+            statement.setString(5, fornecedor.getEmail());
+            statement.setString(6, fornecedor.getRazao_Social());
+            LOG.info(statement.toString());
+            statement.execute();
+            statement.close();
+        } catch (SQLException e) {
+            LOG.log(Level.INFO, "Erro ao inserir o fornecedor: {0}", e);
+        } finally {
+            if (statement != null) {
+                statement.close();
+            }
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
-    
-   
-    
+
 }

@@ -5,8 +5,8 @@
  */
 package br.fatec.controls;
 
+
 import br.fatec.dao.FornecedorDao;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import br.fatec.dtos.FornecedorDto;
 import br.fatec.utils.SistemaUtils;
