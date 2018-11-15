@@ -5,19 +5,22 @@
  */
 package br.fatec.controls;
 
+import br.fatec.dao.FornecedorDao;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import br.fatec.dtos.FornecedorDto;
+import br.fatec.utils.SistemaUtils;
 
 /**
  *
  * @author Felipe
  */
 public class FornecedorController {
-    private static FornecedorDto objFornecedor;
+    private static FornecedorDao objFornecedor;
+    private SistemaUtils util = new SistemaUtils();
     
     public String salvarFornecedor(FornecedorDto fornecedor){        
-               
+        util.validarFornecedor(fornecedor);
         
         return null;
     }
