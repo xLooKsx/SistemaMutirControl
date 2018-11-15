@@ -16,33 +16,13 @@ import br.fatec.dtos.FornecedorDto;
 public class FornecedorController {
     private static FornecedorDto objFornecedor;
     
-    public static void salvarFornecedor(ArrayList<String> fLista) throws SQLException, ClassNotFoundException{
-        objFornecedor.setCnpj(fLista.get(1));
-        objFornecedor.setNome(fLista.get(2));
-        objFornecedor.setEndereco(fLista.get(3));
-        objFornecedor.setTelefone(fLista.get(4));
-        objFornecedor.setEmail(fLista.get(5));
-        objFornecedor.setRazao_Social(fLista.get(6));
-       
-        objFornecedor.Salvar();
+    public static void salvarFornecedor(ArrayList<String> fLista) throws SQLException, ClassNotFoundException{        
+               
     }
     
    
     
     public static ArrayList<String[]> getForncedor(){
-        ArrayList<String[]> fornecedor = new ArrayList();
-        
-        ArrayList<FornecedorDto> forne = FornecedorDto.getFornecedor();
-        for(int i=0;i<forne.size();i++){
-           String f[] = new String[6];
-           f[0] = forne.get(i).getCnpj();
-           f[1] = forne.get(i).getNome();
-           f[2] = forne.get(i).getEndereco();
-           f[3] = forne.get(i).getTelefone();
-           f[4] = forne.get(i).getEmail();
-           f[5] = forne.get(i).getRazao_Social();
-           fornecedor.add(f);
-        }
-        return fornecedor;
+        return null;
     }
 }

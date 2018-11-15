@@ -5,35 +5,34 @@
  */
 package br.fatec.dtos;
 
+import java.util.Objects;
 
 /**
  *
  * @author Felipe
  */
-public class MotoristaDto {
+public class MecanicoDto {
     private String cpf;
     private String rg;
-    private String cnh;
     private String nome;
     private String endereco;
     private String telefone;
     private String email;
-    private VeiculoDto veiculo;
 
-    public MotoristaDto() {
-        this("", "", "", "", "", "", "", new VeiculoDto());
+    public MecanicoDto() {
+        this("", "", "", "", "", "");
     }
-
-    public MotoristaDto(String cpf, String rg, String cnh, String nome, String endereco, String telefone, String email, VeiculoDto veiculo) {
+    
+    public MecanicoDto(String cpf, String rg, String nome, String endereco, String telefone, String email) {
         this.cpf = cpf;
         this.rg = rg;
-        this.cnh = cnh;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
-        this.veiculo = veiculo;
     }
+
+   
 
     public String getCpf() {
         return cpf;
@@ -49,14 +48,6 @@ public class MotoristaDto {
 
     public void setRg(String rg) {
         this.rg = rg;
-    }
-
-    public String getCnh() {
-        return cnh;
-    }
-
-    public void setCnh(String cnh) {
-        this.cnh = cnh;
     }
 
     public String getNome() {
@@ -91,18 +82,39 @@ public class MotoristaDto {
         this.email = email;
     }
 
-    public VeiculoDto getVeiculo() {
-        return veiculo;
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + Objects.hashCode(this.cpf);
+        hash = 29 * hash + Objects.hashCode(this.rg);
+        return hash;
     }
 
-    public void setVeiculo(VeiculoDto veiculo) {
-        this.veiculo = veiculo;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MecanicoDto other = (MecanicoDto) obj;
+        if (!Objects.equals(this.cpf, other.cpf)) {
+            return false;
+        }
+        if (!Objects.equals(this.rg, other.rg)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
-        return "MotoristaDto{" + "cpf=" + cpf + ", rg=" + rg + ", cnh=" + cnh + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", veiculo=" + veiculo + '}';
+        return "Mecanicos{" + "cpf=" + cpf + ", rg=" + rg + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + '}';
     }
-       
+    
     
 }

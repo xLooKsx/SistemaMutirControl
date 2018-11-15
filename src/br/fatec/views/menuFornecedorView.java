@@ -153,6 +153,11 @@ public class menuFornecedorView extends javax.swing.JInternalFrame {
         );
 
         btnConsultar.setText("Consultar");
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
 
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -274,6 +279,10 @@ public class menuFornecedorView extends javax.swing.JInternalFrame {
         campos(true,true,true,true,true,true);
         botoes(false, false, false, false, true, true);
     }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -4,23 +4,10 @@
  * and open the template in the editor.
  */
 package br.fatec.dtos;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Objects;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import br.fatec.daos.FornecedorDao;
-
 /**
  *
  * @author Felipe
  */
-
-
-
 
 public class FornecedorDto {
    
@@ -29,9 +16,10 @@ public class FornecedorDto {
     private String endereco;   
     private String telefone;
     private String email;
-    private String razao_Social;
+    private String razaoSocial;
     
     public FornecedorDto() {
+        this("", "", "", "", "", "");
     }
 
     public FornecedorDto(String cnpj, String nome, String endereco, String telefone, String email, String razao_Social) {
@@ -40,7 +28,7 @@ public class FornecedorDto {
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
-        this.razao_Social = razao_Social;
+        this.razaoSocial = razao_Social;
     }
 
     public String getCnpj() {
@@ -84,53 +72,15 @@ public class FornecedorDto {
     }
 
     public String getRazao_Social() {
-        return razao_Social;
+        return razaoSocial;
     }
 
     public void setRazao_Social(String razao_Social) {
-        this.razao_Social = razao_Social;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.cnpj);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final FornecedorDto other = (FornecedorDto) obj;
-        if (!Objects.equals(this.cnpj, other.cnpj)) {
-            return false;
-        }
-        return true;
-    }
-    
-   
-    public static ArrayList<FornecedorDto> getFornecedor(){
-        ArrayList<FornecedorDto> fornecedores = new ArrayList();
-        return fornecedores;
-    }
+        this.razaoSocial = razao_Social;
+    }  
     
     @Override
     public String toString() {
-        return "Fornecedor{" + "cnpj=" + cnpj + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", razao_Social=" + razao_Social + '}';
+        return "Fornecedor{" + "cnpj=" + cnpj + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", razao_Social=" + razaoSocial + '}';
     }
-    
-   
-    
-    public void Salvar() throws SQLException, ClassNotFoundException{
-      FornecedorDao.SalvarFornecedor(this);
-    }
-    
 }

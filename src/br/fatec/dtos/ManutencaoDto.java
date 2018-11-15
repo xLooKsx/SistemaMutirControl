@@ -4,33 +4,34 @@
  * and open the template in the editor.
  */
 package br.fatec.dtos;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Felipe
  */
 public class ManutencaoDto {
-    private int idManutencao;
+    
     private Date dataSolicitacao;
     private Date dataRealizacao;
     private String tipoManutencao;
-    private MotoristaVeiculoDto motorista_cpf;
-    private MotoristaVeiculoDto veiculo_numero_veiculo;
-    private MecanicosDto mecanicos_cpf;
-    private PecasOrcadasDto pecas_orcadas_mecanicos_cpf;
-    private PecasOrcadasDto pecas_idPecas;
-    private PecasOrcadasDto fornecedor_cnpj;
+    private MotoristaDto motoristaDto;
+    private MecanicoDto mecanicoDto;
+    private List<PecaOrcadaDto> pecasOrcadas;
 
     public ManutencaoDto() {
+        this(new Date(), new Date(), "", new MotoristaDto(), new MecanicoDto(), new ArrayList<PecaOrcadaDto>());
     }
 
-    public int getIdManutencao() {
-        return idManutencao;
-    }
-
-    public void setIdManutencao(int idManutencao) {
-        this.idManutencao = idManutencao;
+    public ManutencaoDto(Date dataSolicitacao, Date dataRealizacao, String tipoManutencao, MotoristaDto motoristaDto, MecanicoDto mecanicoDto, List<PecaOrcadaDto> pecasOrcadas) {
+        this.dataSolicitacao = dataSolicitacao;
+        this.dataRealizacao = dataRealizacao;
+        this.tipoManutencao = tipoManutencao;
+        this.motoristaDto = motoristaDto;
+        this.mecanicoDto = mecanicoDto;
+        this.pecasOrcadas = pecasOrcadas;
     }
 
     public Date getDataSolicitacao() {
@@ -57,83 +58,34 @@ public class ManutencaoDto {
         this.tipoManutencao = tipoManutencao;
     }
 
-    public MotoristaVeiculoDto getMotorista_cpf() {
-        return motorista_cpf;
+    public MotoristaDto getMotoristaDto() {
+        return motoristaDto;
     }
 
-    public void setMotorista_cpf(MotoristaVeiculoDto motorista_cpf) {
-        this.motorista_cpf = motorista_cpf;
+    public void setMotoristaDto(MotoristaDto motoristaDto) {
+        this.motoristaDto = motoristaDto;
     }
 
-    public MotoristaVeiculoDto getVeiculo_numero_veiculo() {
-        return veiculo_numero_veiculo;
+    public MecanicoDto getMecanicoDto() {
+        return mecanicoDto;
     }
 
-    public void setVeiculo_numero_veiculo(MotoristaVeiculoDto veiculo_numero_veiculo) {
-        this.veiculo_numero_veiculo = veiculo_numero_veiculo;
+    public void setMecanicoDto(MecanicoDto mecanicoDto) {
+        this.mecanicoDto = mecanicoDto;
     }
 
-    public MecanicosDto getMecanicos_cpf() {
-        return mecanicos_cpf;
+    public List<PecaOrcadaDto> getPecasOrcadas() {
+        return pecasOrcadas;
     }
 
-    public void setMecanicos_cpf(MecanicosDto mecanicos_cpf) {
-        this.mecanicos_cpf = mecanicos_cpf;
-    }
-
-    public PecasOrcadasDto getPecas_orcadas_mecanicos_cpf() {
-        return pecas_orcadas_mecanicos_cpf;
-    }
-
-    public void setPecas_orcadas_mecanicos_cpf(PecasOrcadasDto pecas_orcadas_mecanicos_cpf) {
-        this.pecas_orcadas_mecanicos_cpf = pecas_orcadas_mecanicos_cpf;
-    }
-
-    public PecasOrcadasDto getPecas_idPecas() {
-        return pecas_idPecas;
-    }
-
-    public void setPecas_idPecas(PecasOrcadasDto pecas_idPecas) {
-        this.pecas_idPecas = pecas_idPecas;
-    }
-
-    public PecasOrcadasDto getFornecedor_cnpj() {
-        return fornecedor_cnpj;
-    }
-
-    public void setFornecedor_cnpj(PecasOrcadasDto fornecedor_cnpj) {
-        this.fornecedor_cnpj = fornecedor_cnpj;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 29 * hash + this.idManutencao;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final ManutencaoDto other = (ManutencaoDto) obj;
-        if (this.idManutencao != other.idManutencao) {
-            return false;
-        }
-        return true;
+    public void setPecasOrcadas(List<PecaOrcadaDto> pecasOrcadas) {
+        this.pecasOrcadas = pecasOrcadas;
     }
 
     @Override
     public String toString() {
-        return "Manutencao{" + "idManutencao=" + idManutencao + ", data_Solicitacao=" + dataSolicitacao + ", data_Realizacao=" + dataRealizacao + ", tipo_Manutencao=" + tipoManutencao + ", motorista_cpf=" + motorista_cpf + ", veiculos_numero_veiculo=" + veiculo_numero_veiculo + ", mecanicos_cpf=" + mecanicos_cpf + ", pecas_orcadas_mecanicos_cpf=" + pecas_orcadas_mecanicos_cpf + ", pecas_idPecas=" + pecas_idPecas + ", fornecedor_cnpj=" + fornecedor_cnpj + '}';
+        return "ManutencaoDto{" + "dataSolicitacao=" + dataSolicitacao + ", dataRealizacao=" + dataRealizacao + ", tipoManutencao=" + tipoManutencao + ", motoristaDto=" + motoristaDto + ", mecanicoDto=" + mecanicoDto + ", pecasOrcadas=" + pecasOrcadas + '}';
     }
-    
+
     
 }
