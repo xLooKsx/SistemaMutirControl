@@ -90,33 +90,7 @@ public class Fornecedor {
     public void setRazao_Social(String razao_Social) {
         this.razao_Social = razao_Social;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        hash = 59 * hash + Objects.hashCode(this.cnpj);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Fornecedor other = (Fornecedor) obj;
-        if (!Objects.equals(this.cnpj, other.cnpj)) {
-            return false;
-        }
-        return true;
-    }
     
-   
     public static ArrayList<Fornecedor> getFornecedor(){
         ArrayList<Fornecedor> fornecedores = new ArrayList();
         return fornecedores;
@@ -128,9 +102,4 @@ public class Fornecedor {
     }
     
    
-    
-    public void Salvar() throws SQLException, ClassNotFoundException{
-      FornecedorDao.SalvarFornecedor(this);
-    }
-    
 }
