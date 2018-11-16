@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 import br.fatec.dtos.FornecedorDto;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,6 +73,7 @@ public class FornecedorDao {
                 .append("NOME = ?, ")
                 .append("ENDERECO = ?, ")
                 .append("TELEFONE = ?, ")
+                .append("EMAIL =?, ")
                 .append("RAZAO_SOCIAL = ? ")
                 .append("WHERE ")
                 .append("CNPJ = ? ");

@@ -12,6 +12,8 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 /**
@@ -90,30 +92,44 @@ public class SistemaUtils {
     }
 
     public boolean validarTelefone(String telefone){
+       return telefone.matches(".((10)|([1-9][1-9]).)\\s9?[6-9][0-9]{3}-[0-9]{4}") ||
+                telefone.matches(".((10)|([1-9][1-9]).)\\s[2-5][0-9]{3}-[0-9]{4}");
+    }
+    
+    public boolean validarEmail(String email){
+         
+        if (email != null && email.length() > 0 && email.length() <= 99) {
+            String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+            Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
+            Matcher matcher = pattern.matcher(email);
+            if (matcher.matches()) {
+                return true;
+            }
+        }
+        return false;
         
+    }
+    
+    public boolean validarTamanho(String nome){
+        if(nome.length() > 99){
+            
+            return false;
+        }
         return true;
     }
     
-    public boolean validarEmail(String telefone){
-        
-        return true;
-    }
-    
-    public boolean validarNome(String telefone){
-        
-        return true;
-    }
-    
-    public boolean validarRazaoSocial(String telefone){
-        
-        return true;
-    }
     
     public boolean validarFornecedor(FornecedorDto fornecedor) {
-
-        return true;
-    }
-
+        if(validarCnpj(fornecedor.getCnpj()) && 
+                validarTamanho(fornecedor.getNome())&&
+                validarTamanho(fornecedor.getEndereco())&&
+                validarTamanho(fornecedor.getRazao_Social())&&
+                validarEmail(fornecedor.getEmail())&&
+                validarTelefone(fornecedor.getTelefone())){
+                return true;
+            }
+        return false;
+    }  
 
     private static ResourceBundle getConfig() {
 

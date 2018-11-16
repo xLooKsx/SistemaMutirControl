@@ -18,18 +18,20 @@ public class MecanicoDto {
     private String endereco;
     private String telefone;
     private String email;
+    private String senha;
 
     public MecanicoDto() {
-        this("", "", "", "", "", "");
+        this("", "", "", "", "", "","");
     }
     
-    public MecanicoDto(String cpf, String rg, String nome, String endereco, String telefone, String email) {
+    public MecanicoDto(String cpf, String rg, String nome, String endereco, String telefone, String email, String senha) {
         this.cpf = cpf;
         this.rg = rg;
         this.nome = nome;
         this.endereco = endereco;
         this.telefone = telefone;
         this.email = email;
+        this.senha = senha;
     }
 
    
@@ -81,6 +83,15 @@ public class MecanicoDto {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
 
     @Override
     public int hashCode() {

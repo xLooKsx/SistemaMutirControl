@@ -68,6 +68,8 @@ public class menuView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Mitur Control");
+        setPreferredSize(new java.awt.Dimension(720, 520));
+        setResizable(false);
 
         manutencaoMenu.setMnemonic('h');
         manutencaoMenu.setText("Manutenção");

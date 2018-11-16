@@ -19,12 +19,13 @@ public class MotoristaDto {
     private String telefone;
     private String email;
     private VeiculoDto veiculo;
+    private String senha;
 
     public MotoristaDto() {
-        this("", "", "", "", "", "", "", new VeiculoDto());
+        this("", "", "", "", "", "", "", new VeiculoDto(), "");
     }
 
-    public MotoristaDto(String cpf, String rg, String cnh, String nome, String endereco, String telefone, String email, VeiculoDto veiculo) {
+    public MotoristaDto(String cpf, String rg, String cnh, String nome, String endereco, String telefone, String email, VeiculoDto veiculo, String senha) {
         this.cpf = cpf;
         this.rg = rg;
         this.cnh = cnh;
@@ -33,6 +34,7 @@ public class MotoristaDto {
         this.telefone = telefone;
         this.email = email;
         this.veiculo = veiculo;
+        this.senha = senha;
     }
 
     public String getCpf() {
@@ -99,6 +101,16 @@ public class MotoristaDto {
         this.veiculo = veiculo;
     }
 
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "MotoristaDto{" + "cpf=" + cpf + ", rg=" + rg + ", cnh=" + cnh + ", nome=" + nome + ", endereco=" + endereco + ", telefone=" + telefone + ", email=" + email + ", veiculo=" + veiculo + '}';

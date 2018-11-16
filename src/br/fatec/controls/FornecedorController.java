@@ -10,6 +10,7 @@ import br.fatec.dao.FornecedorDao;
 import java.util.ArrayList;
 import br.fatec.dtos.FornecedorDto;
 import br.fatec.utils.SistemaUtils;
+import java.sql.SQLException;
 
 /**
  *
@@ -19,8 +20,10 @@ public class FornecedorController {
     private static FornecedorDao objFornecedor;
     private SistemaUtils util = new SistemaUtils();
     
-    public String salvarFornecedor(FornecedorDto fornecedor){        
-        util.validarFornecedor(fornecedor);
+    public String salvarFornecedor(FornecedorDto fornecedor) throws SQLException{        
+        if(util.validarFornecedor(fornecedor)){
+            objFornecedor.inserirFornecedor(fornecedor);
+        }
         
         return null;
     }
