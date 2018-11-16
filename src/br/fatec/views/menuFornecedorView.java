@@ -298,7 +298,8 @@ public class menuFornecedorView extends javax.swing.JInternalFrame {
         novoRegistro.setRazao_Social(txtRazaoSocial.getText());
        
         try {
-            controller.salvarFornecedor(novoRegistro);
+            String returnStatus = controller.salvarFornecedor(novoRegistro);
+            JOptionPane.showMessageDialog(null, returnStatus, "Information", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             Logger.getLogger(menuFornecedorView.class.getName()).log(Level.SEVERE, null, ex);
         }

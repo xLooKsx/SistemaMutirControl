@@ -104,7 +104,7 @@ public class FornecedorDao {
         }
     }
 
-    public void inserirFornecedor(FornecedorDto fornecedor) throws SQLException {
+    public String inserirFornecedor(FornecedorDto fornecedor) throws SQLException {
 
         connection = connectionFactory.getConexao();
         StringBuilder sqlQuery = new StringBuilder();
@@ -125,8 +125,10 @@ public class FornecedorDao {
             statement.setString(5, fornecedor.getEmail());
             statement.setString(6, fornecedor.getRazao_Social());
             LOG.info(statement.toString());
-            statement.execute();
-            statement.close();
+            statement.execute();            
+            if (statement.executeUpdate() > 0) {
+                return "Fornecedor Criado com Sucesso";
+            }
         } catch (SQLException e) {
             LOG.log(Level.INFO, "Erro ao inserir o fornecedor: {0}", e);
         } finally {
@@ -140,6 +142,8 @@ public class FornecedorDao {
                 connection.close();
             }
         }
+        
+        return "Erro ao criar o fornecedor";
     }
 
 }

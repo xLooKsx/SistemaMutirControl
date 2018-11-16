@@ -108,27 +108,20 @@ public class SistemaUtils {
         }
         return false;
         
-    }
+    }       
     
-    public boolean validarTamanho(String nome){
-        if(nome.length() > 99){
-            
-            return false;
+    public String validarFornecedor(FornecedorDto fornecedor) {
+        StringBuilder messageBuilder = new StringBuilder();
+        if(!validarCnpj(fornecedor.getCnpj())){
+                messageBuilder.append("CNPJ invalido \n");
         }
-        return true;
-    }
-    
-    
-    public boolean validarFornecedor(FornecedorDto fornecedor) {
-        if(validarCnpj(fornecedor.getCnpj()) && 
-                validarTamanho(fornecedor.getNome())&&
-                validarTamanho(fornecedor.getEndereco())&&
-                validarTamanho(fornecedor.getRazao_Social())&&
-                validarEmail(fornecedor.getEmail())&&
-                validarTelefone(fornecedor.getTelefone())){
-                return true;
-            }
-        return false;
+        if (!validarTelefone(fornecedor.getTelefone())) {
+            messageBuilder.append("Telefone invalido \n");
+        }
+        if (!validarEmail(fornecedor.getEmail())) {
+            messageBuilder.append("E-mail invalido \n");
+        }
+        return messageBuilder.toString();
     }  
 
     private static ResourceBundle getConfig() {

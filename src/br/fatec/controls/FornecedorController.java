@@ -17,19 +17,18 @@ import java.sql.SQLException;
  * @author Felipe
  */
 public class FornecedorController {
-    private static FornecedorDao objFornecedor;
-    private SistemaUtils util = new SistemaUtils();
+    private FornecedorDao objFornecedor;
+    private String resultadoVlidacao;
+    private final SistemaUtils util = new SistemaUtils();
     
-    public String salvarFornecedor(FornecedorDto fornecedor) throws SQLException{        
-        if(util.validarFornecedor(fornecedor)){
-            objFornecedor.inserirFornecedor(fornecedor);
-        }
-        
-        return null;
+    public String salvarFornecedor(FornecedorDto fornecedor) throws SQLException{                
+        resultadoVlidacao = util.validarFornecedor(fornecedor);
+        if(resultadoVlidacao.trim().length() > 0){
+           resultadoVlidacao = objFornecedor.inserirFornecedor(fornecedor);
+        }        
+        return resultadoVlidacao;
     }
-    
-   
-    
+        
     public static ArrayList<String[]> getForncedor(){
         return null;
     }
